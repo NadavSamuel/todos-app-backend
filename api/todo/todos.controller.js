@@ -9,6 +9,8 @@ async function getTodos(req, res) {
         res.send(todos)
     } catch (err) {
         logger.error('Cannot get todos', err);
+        logger.error('query sent: ', query);
+        logger.error('req.byUser sent: ', req.session.user);
         res.status(500).send({ error: 'cannot get todos',querySent:query})
 
     }
