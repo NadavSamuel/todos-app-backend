@@ -9,7 +9,7 @@ async function getTodos(req, res) {
         res.send(todos)
     } catch (err) {
         logger.error('Cannot get todos', err);
-        res.status(500).send({ error: 'cannot get todos' })
+        res.status(500).send({ error: 'cannot get todos',err })
 
     }
 }
