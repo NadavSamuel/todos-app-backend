@@ -1,13 +1,15 @@
 const logger = require('../../services/logger.service')
 const todoService = require('./todo.service')
 
-
 async function getTodos(req, res) {
     try {
         const query = {byUser:req.session.user.username,...req.query}
         const todos = await todoService.query(query)
         res.send(todos)
     } catch (err) {
+        console.log('Cannot get todos', err);
+        console.log('query sent: ', query);
+        console.log('req.byUser sent: ', req.session.user);
         logger.error('Cannot get todos', err);
         logger.error('query sent: ', query);
         logger.error('req.byUser sent: ', req.session.user);
