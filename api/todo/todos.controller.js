@@ -8,8 +8,8 @@ async function getTodos(req, res) {
         const todos = await todoService.query(query)
         res.send(todos)
     } catch (err) {
-        logger.error('Cannot get todos', 'query sent: ,',query);
-        res.status(500).send({ error: 'cannot get todos',err })
+        logger.error('Cannot get todos', err);
+        res.status(500).send({ error: 'cannot get todos',querySent:query})
 
     }
 }
