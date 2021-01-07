@@ -35,8 +35,19 @@ app.use(session({
 //     };
 //     app.use(cors(corsOptions));
 // }
+var corsOptions = {
+    origin: '*',
+    credentials : true
+   }
 
-app.use(cors())
+app.use(cors(corsOptions))
+app.use(function (req, res, next) {	
+    res.setHeader('Access-Control-Allow-Origin', '*');    
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');    
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');   
+    res.setHeader('Access-Control-Allow-Credentials', true);    
+    next();
+});
 
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
