@@ -3,6 +3,9 @@ const todoService = require('./todo.service')
 
 async function getTodos(req, res) {
     try {
+        console.log('req.session, ',req.session)
+        logger.info('req.session', req.session);
+
         const query = {byUser:req.session.user.username,...req.query}
         const todos = await todoService.query(query)
         res.send(todos)
