@@ -14,7 +14,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: true }
 }))
 
 
@@ -23,14 +23,6 @@ app.use(session({
         credentials: true
     };
     app.use(cors(corsOptions));
-
-// var corsOptions = {
-//     origin: '*',
-//     credentials : true
-//    }
-
-// app.use(cors())
-
 
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
