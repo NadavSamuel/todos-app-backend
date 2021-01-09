@@ -14,7 +14,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false,httpOnly: false}
+    cookie: { secure: false,httpOnly: true}
 }))
 
     const corsOptions = {
