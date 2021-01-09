@@ -10,13 +10,20 @@ const http = require('http').createServer(app);
 // Express App Config
 app.use(cookieParser())
 app.use(bodyParser.json());
-app.use(session({
+const sess = {
     secret: 'keyboard cat',
     resave: false,
     signed: false,
-    saveUninitialized: false,
-    cookie: { secure: false, httpOnly: true}
-}))
+    saveUninitialized: true,
+    cookie: { secure: false}
+}
+const dev = process.env.NODE_ENV !== 'production';
+if (!dev) {
+    server.set('trust proxy', 1); // sets req.hostname, req.ip
+    sess.cookie.secure = true; // sets cookie over HTTPS only
+    sess.cookie.domain = `https://todos-next-js.vercel.app `// sets domain for production env
+  }
+app.use(session(sess))
 
     const corsOptions = {
         origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000','https://todos-next-js.vercel.app'],
