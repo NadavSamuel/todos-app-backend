@@ -14,7 +14,7 @@ const sess = {
     secret: 'keyboard cat',
     resave: false,
     signed: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { secure: false}
 }
 const dev = process.env.NODE_ENV !== 'production';
