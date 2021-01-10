@@ -15,7 +15,7 @@ const sess = {
     resave: false,
     signed: false,
     saveUninitialized: false,
-    cookie: { secure: false},
+    cookie: { secure: false,httpOnly:false},
 }
 const dev = process.env.NODE_ENV !== 'production';
 if (!dev) {
@@ -24,13 +24,7 @@ if (!dev) {
     sess.cookie.domain = `https://todos-next-js.vercel.app `// sets domain for production env
   }
 app.use(session(sess))
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Credentials', true);
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
-    next();
-});
+
 
     const corsOptions = {
         origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000','https://todos-next-js.vercel.app'],
