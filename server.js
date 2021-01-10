@@ -20,7 +20,7 @@ const sess = {
 const dev = process.env.NODE_ENV !== 'production';
 if (!dev) {
     app.set('trust proxy', 1); // sets req.hostname, req.ip
-    sess.cookie.secure = true; // sets cookie over HTTPS only
+    // sess.cookie.secure = true; // sets cookie over HTTPS only
     sess.cookie.domain = `https://todos-next-js.vercel.app `// sets domain for production env
     sess.cookie.sameSite = 'none' 
   }
