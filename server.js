@@ -15,7 +15,8 @@ const sess = {
     resave: false,
     signed: false,
     saveUninitialized: false,
-    cookie: { secure: false}
+    cookie: { secure: false},
+    domain: 'https://todos-next-js.vercel.app',
 }
 const dev = process.env.NODE_ENV !== 'production';
 if (!dev) {
