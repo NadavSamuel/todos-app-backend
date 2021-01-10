@@ -29,7 +29,7 @@ app.use(session(sess))
         origin: ['http://127.0.0.1:8080', 'http://localhost:8080', 'http://127.0.0.1:3000', 'http://localhost:3000','https://todos-next-js.vercel.app'],
         credentials: true
     };
-    app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
